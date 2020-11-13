@@ -12,6 +12,7 @@ Connect your motor controller according to the table.
 | Coil A, end 2 | 24           | 10      | 35             |
 | Coil B, end 1 | 23           | 9       | 33             |
 | Coil B, end 2 | 22           | 8       | 31             |
+
 _Tab.: pin connections in different numbering systems_
 
 Then clone the repository, navigate into it and run these commands: 
