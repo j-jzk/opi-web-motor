@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta encoding="utf=8" />
+		<title>Web Stepper Motor Controller</title>
+		<script>
+			window.onload = function() {
+				let slider = document.getElementById("slider");
+				let output = document.getElementById("output");
+
+				let prev_value = 0;
+				
+				const send = function(url) {
+					fetch(url)
+						.then(response => response.text())
+						.then(data => {
+							output.innerText = data;
+						});
+				}
+				
+				let set_btn = document.getElementById("set");
+				set_btn.onclick = function() {
+					output.innerText = "Performing operation...";
+					send("/set/" + (slider.value - prev_value));
+					prev_value = slider.value;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Control a linear stepper motor through a web interface!</h1>
+		
+		<p>
+			Before use, drag your stepper motor head to the position closest to the motor.
+		</p>	
+		<!--<button id="start">Start</button> <button id="stop">Stop</button>-->
+		<br /><input type="range" value="0" max="60"  id="slider">
+		<button id="set">Go</button>
+		<br /> <span id="output"></span>
+	</body>
+</html>
